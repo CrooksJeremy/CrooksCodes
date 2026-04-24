@@ -587,7 +587,7 @@ body {
 .project-row--linked .project-row-link:hover { padding-left: 1.5rem; }
 
 .project-row-link--static {
-  cursor: not-allowed;
+  cursor: none;
   opacity: 0.78;
 }
 
