@@ -897,7 +897,11 @@ export default function Home() {
                         ))}
                       </div>
                     </div>
-                    <span className="project-row-arrow" aria-hidden="true">↗</span>
+                    {isLinked ? (
+                      <span className="project-row-arrow" aria-hidden="true">↗</span>
+                    ) : (
+                      <span className="project-row-soon" aria-label="Coming soon">COMING SOON</span>
+                    )}
                   </>
                 );
 

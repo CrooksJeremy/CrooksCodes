@@ -680,6 +680,22 @@ body {
   transform: translate(8px, -8px);
 }
 
+.project-row-soon {
+  justify-self: end;
+  align-self: start;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(200, 168, 75, 0.5);
+  border-radius: 999px;
+  background: rgba(200, 168, 75, 0.08);
+  white-space: nowrap;
+}
+
 /* ─── EXPERIENCE ──────────────────────────────────── */
 .exp-row {
   display: grid;
