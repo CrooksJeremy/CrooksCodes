@@ -687,7 +687,8 @@ const projects: Project[] = [
     year: "2026",
     title: "Table4Two",
     desc: "A shared-decision app for pairs. Ends the \"wherever you want\" standoff — swipe together, match on a pick, go eat.",
-    tags: ["React Native", "Node.js", "Supabase"],
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+    href: "https://table4two.netlify.app",
   },
   {
     num: "02",
