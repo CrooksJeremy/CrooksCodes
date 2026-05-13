@@ -693,24 +693,24 @@ const projects: Project[] = [
   {
     num: "02",
     year: "2026",
+    title: "Truecast",
+    desc: "A weather app that doesn't pick favorites. Asks 7 forecast models at once, surfaces the consensus, and shows where they disagree.",
+    tags: ["Svelte 5", "TypeScript", "Vite"],
+    href: "https://truecastweather.netlify.app",
+  },
+  {
+    num: "03",
+    year: "2026",
     title: "Deckstack",
     desc: "Interview-prep flashcards tuned for technical interviews. Spaced repetition, custom decks, and a review loop built for retention.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
   },
   {
-    num: "03",
+    num: "04",
     year: "2026",
     title: "Looking Glass",
     desc: "Portfolio analytics dashboard. Performance, allocation breakdowns, and trends visualized in one place.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-  },
-  {
-    num: "04",
-    year: "2026",
-    title: "Truecast",
-    desc: "A weather app that doesn't pick favorites. Asks 7 forecast models at once, surfaces the consensus, and shows where they disagree.",
-    tags: ["Svelte 5", "TypeScript", "Vite"],
-    href: "https://truecastweather.netlify.app",
   },
 ];
 
