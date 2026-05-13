@@ -16,7 +16,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jeremycrooks.ca";
 const siteName = "JeremyCrooks.ca";
 const title = "JeremyCrooks.ca — Full-Stack Developer";
 const description =
-  "Full-stack developer building scalable systems — clean architecture, modular APIs, and modern frontend experiences. Based in Halifax, Nova Scotia.";
+  "Full-stack developer building websites and web apps — fast, reliable, and built to grow with you. Based in Halifax, Nova Scotia.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

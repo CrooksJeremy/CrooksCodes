@@ -82,8 +82,8 @@ export default async function OpenGraphImage() {
             }}
           >
             <span>Building</span>
-            <span style={{ color: "#c8a84b" }}>Scalable</span>
-            <span>Systems.</span>
+            <span style={{ color: "#c8a84b" }}>Websites &</span>
+            <span>Web Apps.</span>
           </div>
         </div>
 

@@ -334,9 +334,9 @@ function Marquee() {
 function StatsBar() {
   const stats = [
     { num: "2+", label: "Years building" },
-    { num: "10+", label: "Projects shipped" },
+    { num: "10+", label: "Projects launched" },
     { num: "5+", label: "Technologies" },
-    { num: "100%", label: "Production focus" },
+    { num: "100%", label: "Built to last" },
   ];
   return (
     <div className="stats-bar">
@@ -364,9 +364,9 @@ function ParallaxNumber({ children }: { children: React.ReactNode }) {
 // ── Typed status ─────────────────────────────────────────────────────────────
 function TypedStatus() {
   const lines = [
-    "Currently building in Next.js",
+    "Currently building a new web app",
     "Open to freelance work",
-    "Focused on scalable architecture",
+    "Building sites that grow with your business",
     "Available for new projects",
   ];
   const reduce = useReducedMotion();
@@ -709,7 +709,7 @@ const projects: Project[] = [
     num: "04",
     year: "2026",
     title: "Looking Glass",
-    desc: "Portfolio analytics dashboard. Performance, allocation breakdowns, and trends visualized in one place.",
+    desc: "An investment dashboard. See how your money is performing, where it's invested, and how it's trending — all in one place.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
   },
 ];
@@ -795,10 +795,10 @@ export default function Home() {
               Full-Stack Developer
             </motion.p>
 
-            <div className="hero-headline" aria-label="Building Scalable Systems">
+            <div className="hero-headline" aria-label="Building Websites & Web Apps">
   <ScrambleWord word="Building" delay={1050} className="hero-word" />
-  <ScrambleWord word="Scalable" delay={1150} className="hero-word accent-text" />
-  <ScrambleWord word="Systems" delay={1250} className="hero-word" />
+  <ScrambleWord word="Websites &" delay={1150} className="hero-word accent-text" />
+  <ScrambleWord word="Web Apps" delay={1250} className="hero-word" />
 </div>
           </div>
 
@@ -808,8 +808,9 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 1.35 }}
           >
             <p className="hero-desc">
-              I design and develop full-stack applications — clean architecture,
-              scalable APIs, and modern frontend experiences built to last.
+              I build websites and web apps end-to-end — the part people see and click,
+              plus everything running quietly behind the scenes. Fast, reliable,
+              and built to grow with you.
             </p>
             <TypedStatus />
             <div className="btn-group">
@@ -1049,7 +1050,7 @@ export default function Home() {
       transition={reduce ? {} : { duration: 20, ease: "linear", repeat: Infinity }}
     >
       {Array.from({ length: 2 }).flatMap((_, pass) =>
-        ["JeremyCrooks.ca", "·", "Full-Stack Developer", "·", "Available for Work", "·", "Based in Canada", "·", "Building Scalable Systems", "·"]
+        ["JeremyCrooks.ca", "·", "Full-Stack Developer", "·", "Available for Work", "·", "Based in Canada", "·", "Building Websites & Web Apps", "·"]
           .map((item, i) => (
             <span key={`${pass}-${i}`} className={item === "·" ? "footer-dot" : "footer-marquee-item"}>
               {item}
