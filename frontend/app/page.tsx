@@ -704,6 +704,14 @@ const projects: Project[] = [
     desc: "Portfolio analytics dashboard. Performance, allocation breakdowns, and trends visualized in one place.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
   },
+  {
+    num: "04",
+    year: "2026",
+    title: "Truecast",
+    desc: "A weather app that doesn't pick favorites. Asks 7 forecast models at once, surfaces the consensus, and shows where they disagree.",
+    tags: ["Svelte 5", "TypeScript", "Vite"],
+    href: "https://truecastweather.netlify.app",
+  },
 ];
 
 // ── Main ─────────────────────────────────────────────────────────────────────
