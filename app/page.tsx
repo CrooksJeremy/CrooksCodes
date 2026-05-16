@@ -270,7 +270,6 @@ function FooterClock() {
   }, []);
   return (
     <span className="footer-clock" suppressHydrationWarning>
-      <span className="footer-clock-dot" />
       {time || "--:--:--"} LOCAL
     </span>
   );
@@ -466,6 +465,7 @@ const techGroups: { title: string; items: Tech[] }[] = [
       { label: "Next.js", slug: "nextdotjs", color: "F0EDE4" },
       { label: "Node.js", slug: "nodedotjs", color: "5FA04E" },
       { label: "Express", slug: "express", color: "F0EDE4" },
+      { label: "Svelte 5", slug: "svelte", color: "FF3E00" },
       { label: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
     ],
   },
@@ -478,6 +478,7 @@ const techGroups: { title: string; items: Tech[] }[] = [
       { label: "Git", slug: "git", color: "F05032" },
       { label: "GitHub", slug: "github", color: "F0EDE4" },
       { label: "Postman", slug: "postman", color: "FF6C37" },
+      { label: "Vite", slug: "vite", color: "646CFF" },
       { label: "Vercel", slug: "vercel", color: "F0EDE4" },
     ],
   },
@@ -544,8 +545,6 @@ const socialIcons: Record<string, React.ReactNode> = {
 };
 
 // ── Backend wiring ───────────────────────────────────────────────────────────
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
 // ── Contact form (POST /api/contact) ─────────────────────────────────────────
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -562,7 +561,7 @@ function ContactForm() {
     setStatus("submitting");
     setErrorMsg("");
     try {
-      const res = await fetch(`${API_URL}/api/contact`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
@@ -701,12 +700,20 @@ const projects: Project[] = [
   {
     num: "03",
     year: "2026",
+    title: "Streetwear Storefront",
+    desc: "An online store for a clothing brand — a properly built alternative to an off-the-shelf Shopify theme. Filterable shop, product pages, and a working cart that remembers what you added.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Tailwind"],
+    href: "https://streetwear-demo.vercel.app",
+  },
+  {
+    num: "04",
+    year: "2026",
     title: "Deckstack",
     desc: "Interview-prep flashcards tuned for technical interviews. Spaced repetition, custom decks, and a review loop built for retention.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
   },
   {
-    num: "04",
+    num: "05",
     year: "2026",
     title: "Looking Glass",
     desc: "An investment dashboard. See how your money is performing, where it's invested, and how it's trending — all in one place.",
@@ -841,9 +848,10 @@ export default function Home() {
               <div className="about-content">
                 <Reveal delay={0.1}>
                   <p className="about-text">
-                    I&apos;m a full-stack developer focused on building production-grade systems.
-                    I care about architecture, performance, scalability, and clean engineering practices.
-                    My goal is to build software that is not just functional — but maintainable and extensible.
+                    I&apos;m a full-stack developer — I design and build complete websites and web apps,
+                    from the screens people click to the systems running behind them.
+                    I care about getting the foundations right: sites that load fast, stay reliable,
+                    and are easy to grow as your business does.
                   </p>
                 </Reveal>
                 <Reveal delay={0.2}>

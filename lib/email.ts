@@ -1,48 +1,56 @@
-const { Resend } = require('resend');
-
 /**
- * EMAIL SERVICE
+ * EMAIL SERVICE (server-only)
  *
  * Sends contact-form notifications to the site owner via Resend.
  *
- * Design notes:
- * - Lazily constructs the Resend client so the module can be imported
- *   even when RESEND_API_KEY isn't set (e.g., in a minimal local env).
- * - Fire-and-forget: if sending fails, the error is logged but the
- *   contact submission (already stored in Supabase) still succeeds.
- * - HTML escaping the user-supplied fields prevents the message body
- *   from injecting tags into the notification email.
+ * - Lazily constructs the Resend client so the module imports cleanly even
+ *   when RESEND_API_KEY isn't set (e.g., a minimal local env).
+ * - Fire-and-forget: if sending fails, the error is logged but the contact
+ *   submission (already stored in Supabase) still succeeds.
+ * - HTML-escaping the user-supplied fields prevents the message body from
+ *   injecting tags into the notification email.
  */
+import { Resend } from "resend";
 
-let client = null;
+export type Contact = {
+  name: string;
+  email: string;
+  message: string;
+  created_at?: string;
+};
 
-function getClient() {
+let client: Resend | null = null;
+
+function getClient(): Resend | null {
   const key = process.env.RESEND_API_KEY;
   if (!key) return null;
   if (!client) client = new Resend(key);
   return client;
 }
 
-function escapeHtml(value) {
+function escapeHtml(value: string): string {
   return String(value).replace(/[&<>"']/g, (c) => {
     switch (c) {
-      case '&': return '&amp;';
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '"': return '&quot;';
-      case "'": return '&#39;';
+      case "&": return "&amp;";
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case '"': return "&quot;";
+      case "'": return "&#39;";
       default: return c;
     }
   });
 }
 
-function buildHtml({ name, email, message, created_at }) {
+function formatWhen(created_at?: string): string {
+  const date = created_at ? new Date(created_at) : new Date();
+  return date.toLocaleString("en-CA", { timeZone: "America/Halifax" });
+}
+
+function buildHtml({ name, email, message, created_at }: Contact): string {
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
-  const safeMessage = escapeHtml(message).replace(/\n/g, '<br />');
-  const when = created_at
-    ? new Date(created_at).toLocaleString('en-CA', { timeZone: 'America/Halifax' })
-    : new Date().toLocaleString('en-CA', { timeZone: 'America/Halifax' });
+  const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
+  const when = formatWhen(created_at);
 
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #0a0a08; color: #f0ede4; padding: 32px; max-width: 560px; margin: 0 auto;">
@@ -60,31 +68,27 @@ function buildHtml({ name, email, message, created_at }) {
   `;
 }
 
-function buildText({ name, email, message, created_at }) {
-  const when = created_at
-    ? new Date(created_at).toLocaleString('en-CA', { timeZone: 'America/Halifax' })
-    : new Date().toLocaleString('en-CA', { timeZone: 'America/Halifax' });
-  return `New contact — JeremyCrooks.ca\n\nFrom: ${name} <${email}>\n\n${message}\n\nReceived: ${when}`;
+function buildText({ name, email, message, created_at }: Contact): string {
+  return `New contact — JeremyCrooks.ca\n\nFrom: ${name} <${email}>\n\n${message}\n\nReceived: ${formatWhen(created_at)}`;
 }
 
 /**
  * Send a notification email for a new contact form submission.
- * Resolves to the Resend response on success, or null if the
- * service is not configured or the send failed.
+ * Resolves to the Resend message id on success, or null if the service
+ * is not configured or the send failed.
  */
-async function sendContactNotification(contact) {
-  console.log('CONTACT EMAIL DISPATCH: starting for', contact?.email);
+export async function sendContactNotification(contact: Contact): Promise<string | null> {
   const resend = getClient();
   if (!resend) {
-    console.warn('CONTACT EMAIL SKIPPED: no client (RESEND_API_KEY missing?)');
+    console.warn("CONTACT EMAIL SKIPPED: no client (RESEND_API_KEY missing?)");
     return null;
   }
 
   const to = process.env.CONTACT_EMAIL_TO;
-  const from = process.env.CONTACT_EMAIL_FROM || 'JeremyCrooks.ca <onboarding@resend.dev>';
+  const from = process.env.CONTACT_EMAIL_FROM || "JeremyCrooks.ca <onboarding@resend.dev>";
 
   if (!to) {
-    console.warn('CONTACT EMAIL SKIPPED: CONTACT_EMAIL_TO is not set');
+    console.warn("CONTACT EMAIL SKIPPED: CONTACT_EMAIL_TO is not set");
     return null;
   }
 
@@ -99,15 +103,13 @@ async function sendContactNotification(contact) {
     });
 
     if (error) {
-      console.error('CONTACT EMAIL ERROR:', error);
+      console.error("CONTACT EMAIL ERROR:", error);
       return null;
     }
     console.log(`CONTACT EMAIL SENT: id=${data?.id} to=${to}`);
-    return data;
+    return data?.id ?? null;
   } catch (err) {
-    console.error('CONTACT EMAIL EXCEPTION:', err);
+    console.error("CONTACT EMAIL EXCEPTION:", err);
     return null;
   }
 }
-
-module.exports = { sendContactNotification };
