@@ -687,7 +687,7 @@ const projects: Project[] = [
     title: "Table4Two",
     desc: "A shared-decision app for pairs. Ends the \"wherever you want\" standoff — swipe together, match on a pick, go eat.",
     tags: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
-    href: "https://table4two.netlify.app",
+    href: "https://table4two-demo.vercel.app",
   },
   {
     num: "02",
@@ -695,7 +695,7 @@ const projects: Project[] = [
     title: "Truecast",
     desc: "A weather app that doesn't pick favorites. Asks 7 forecast models at once, surfaces the consensus, and shows where they disagree.",
     tags: ["Svelte 5", "TypeScript", "Vite"],
-    href: "https://truecastweather.netlify.app",
+    href: "https://truecastweather.vercel.app",
   },
   {
     num: "03",
@@ -1014,7 +1014,7 @@ export default function Home() {
               {[
                 { label: "Email", meta: "Primary", cursor: "Email", href: "mailto:jeremycrooks20@gmail.com", handle: "jeremycrooks20@gmail.com" },
                 { label: "GitHub", meta: "Code", cursor: "Visit", href: "https://github.com/CrooksJeremy", handle: "@CrooksJeremy" },
-                { label: "LinkedIn", meta: "Network", cursor: "Visit", href: "https://ca.linkedin.com/in/jeremy-crooks-9aaa81364/", handle: "jeremy-crooks" },
+                { label: "LinkedIn", meta: "Network", cursor: "Visit", href: "https://www.linkedin.com/in/jeremygcrooks", handle: "jeremygcrooks" },
               ].map((link, i) => (
                 <a
                   key={link.label}
