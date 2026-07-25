@@ -55,7 +55,7 @@ function buildHtml({ name, email, message, created_at }: Contact): string {
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #0a0a08; color: #f0ede4; padding: 32px; max-width: 560px; margin: 0 auto;">
       <div style="font-family: 'SFMono-Regular', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c8a84b; margin-bottom: 20px;">
-        New contact — JeremyCrooks.ca
+        New contact — CrooksCodes
       </div>
       <div style="border-top: 1px solid rgba(240, 237, 228, 0.14); padding-top: 20px;">
         <p style="margin: 0 0 6px; font-family: 'SFMono-Regular', Menlo, monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #6a6860;">From</p>
@@ -69,7 +69,7 @@ function buildHtml({ name, email, message, created_at }: Contact): string {
 }
 
 function buildText({ name, email, message, created_at }: Contact): string {
-  return `New contact — JeremyCrooks.ca\n\nFrom: ${name} <${email}>\n\n${message}\n\nReceived: ${formatWhen(created_at)}`;
+  return `New contact — CrooksCodes\n\nFrom: ${name} <${email}>\n\n${message}\n\nReceived: ${formatWhen(created_at)}`;
 }
 
 /**
@@ -85,7 +85,7 @@ export async function sendContactNotification(contact: Contact): Promise<string 
   }
 
   const to = process.env.CONTACT_EMAIL_TO;
-  const from = process.env.CONTACT_EMAIL_FROM || "JeremyCrooks.ca <onboarding@resend.dev>";
+  const from = process.env.CONTACT_EMAIL_FROM || "CrooksCodes <onboarding@resend.dev>";
 
   if (!to) {
     console.warn("CONTACT EMAIL SKIPPED: CONTACT_EMAIL_TO is not set");

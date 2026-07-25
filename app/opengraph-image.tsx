@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "JeremyCrooks.ca — Full-Stack Developer";
+export const alt = "CrooksCodes — Full-Stack Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,7 +45,7 @@ export default async function OpenGraphImage() {
             />
             <span>Portfolio — 2026</span>
           </span>
-          <span style={{ color: "#f0ede4" }}>JeremyCrooks<span style={{ color: "#c8a84b" }}>.</span>ca</span>
+          <span style={{ color: "#f0ede4" }}>CrooksCodes<span style={{ color: "#c8a84b" }}>.</span>com</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>

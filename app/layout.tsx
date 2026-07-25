@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jeremycrooks.ca";
-const siteName = "JeremyCrooks.ca";
-const title = "JeremyCrooks.ca — Full-Stack Developer";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://crookscodes.com";
+const siteName = "CrooksCodes";
+const title = "CrooksCodes — Full-Stack Developer";
 const description =
   "Full-stack developer building websites and web apps — fast, reliable, and built to grow with you. Based in Halifax, Nova Scotia.";
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: title,
-    template: "%s — JeremyCrooks.ca",
+    template: "%s — CrooksCodes",
   },
   description,
   applicationName: siteName,

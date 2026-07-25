@@ -764,7 +764,7 @@ export default function Home() {
   animate={{ y: 0, opacity: 1 }}
   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
 >
-  <span className="nav-logo" data-cursor="Top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>JeremyCrooks<em>.</em>ca</span>
+  <span className="nav-logo" data-cursor="Top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>CrooksCodes<em>.</em>com</span>
   <span className="avail-badge">
     <span className="avail-dot" />
     Available for <span className="avail-badge-accent">freelance</span> work
@@ -1058,7 +1058,7 @@ export default function Home() {
       transition={reduce ? {} : { duration: 20, ease: "linear", repeat: Infinity }}
     >
       {Array.from({ length: 2 }).flatMap((_, pass) =>
-        ["JeremyCrooks.ca", "·", "Full-Stack Developer", "·", "Available for Work", "·", "Based in Canada", "·", "Building Websites & Web Apps", "·"]
+        ["CrooksCodes", "·", "Full-Stack Developer", "·", "Available for Work", "·", "Based in Canada", "·", "Building Websites & Web Apps", "·"]
           .map((item, i) => (
             <span key={`${pass}-${i}`} className={item === "·" ? "footer-dot" : "footer-marquee-item"}>
               {item}
@@ -1069,7 +1069,7 @@ export default function Home() {
   </div>
 
   <div className="portfolio-footer-bottom">
-    <span>JeremyCrooks.ca — Portfolio</span>
+    <span>CrooksCodes — Portfolio</span>
     <FooterClock />
     <span>© 2025</span>
   </div>
