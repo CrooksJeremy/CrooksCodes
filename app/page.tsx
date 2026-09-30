@@ -364,9 +364,7 @@ function ParallaxNumber({ children }: { children: React.ReactNode }) {
 function TypedStatus() {
   const lines = [
     "Currently building a new web app",
-    "Open to freelance work",
     "Building sites that grow with your business",
-    "Available for new projects",
   ];
   const reduce = useReducedMotion();
   const [lineIndex, setLineIndex] = useState(0);
@@ -730,7 +728,7 @@ export default function Home() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   const copyEmail = () => {
-    navigator.clipboard?.writeText("jeremycrooks20@gmail.com").catch(() => {});
+    navigator.clipboard?.writeText("jeremy@crookscodes.com").catch(() => {});
     setEmailCopied(true);
     window.setTimeout(() => setEmailCopied(false), 1800);
   };
@@ -765,10 +763,6 @@ export default function Home() {
   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
 >
   <span className="nav-logo" data-cursor="Top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>CrooksCodes<em>.</em>com</span>
-  <span className="avail-badge">
-    <span className="avail-dot" />
-    Available for <span className="avail-badge-accent">freelance</span> work
-  </span>
   <div className="nav-links" style={{ position: "relative" }}>
     {["about", "skills", "projects", "experience", "contact"].map((item, i) => (
       <motion.button key={item} onClick={() => scrollTo(item)}
@@ -874,10 +868,6 @@ export default function Home() {
                     <div className="about-fact">
                       <dt>Currently</dt>
                       <dd>Building Looking Glass — a privacy-first analytics dashboard</dd>
-                    </div>
-                    <div className="about-fact">
-                      <dt>Open to</dt>
-                      <dd>Junior roles, freelance, co-op</dd>
                     </div>
                   </dl>
                 </Reveal>
@@ -992,7 +982,7 @@ export default function Home() {
               <LetterReveal text="great." className="contact-line accent-text" delay={0.22} />
             </h2>
             <a
-              href="mailto:jeremycrooks20@gmail.com"
+              href="mailto:jeremy@crookscodes.com"
               className={emailCopied ? "contact-email is-copied" : "contact-email"}
               data-cursor={emailCopied ? "Copied" : "Email"}
               onClick={copyEmail}
@@ -1000,7 +990,7 @@ export default function Home() {
               <span className="contact-email-kicker">
                 {emailCopied ? "Copied —" : "Write to me —"}
               </span>
-              <span className="contact-email-addr">jeremycrooks20@gmail.com</span>
+              <span className="contact-email-addr">jeremy@crookscodes.com</span>
               <span className="contact-email-arrow" aria-hidden="true">
                 {emailCopied ? "✓" : "↗"}
               </span>
@@ -1012,7 +1002,7 @@ export default function Home() {
           <Reveal delay={0.2} className="contact-right">
             <div className="contact-socials">
               {[
-                { label: "Email", meta: "Primary", cursor: "Email", href: "mailto:jeremycrooks20@gmail.com", handle: "jeremycrooks20@gmail.com" },
+                { label: "Email", meta: "Primary", cursor: "Email", href: "mailto:jeremy@crookscodes.com", handle: "jeremy@crookscodes.com" },
                 { label: "GitHub", meta: "Code", cursor: "Visit", href: "https://github.com/CrooksJeremy", handle: "@CrooksJeremy" },
                 { label: "LinkedIn", meta: "Network", cursor: "Visit", href: "https://www.linkedin.com/in/jeremygcrooks", handle: "jeremygcrooks" },
               ].map((link, i) => (
@@ -1058,7 +1048,7 @@ export default function Home() {
       transition={reduce ? {} : { duration: 20, ease: "linear", repeat: Infinity }}
     >
       {Array.from({ length: 2 }).flatMap((_, pass) =>
-        ["CrooksCodes", "·", "Full-Stack Developer", "·", "Available for Work", "·", "Based in Canada", "·", "Building Websites & Web Apps", "·"]
+        ["CrooksCodes", "·", "Full-Stack Developer", "·", "Based in Canada", "·", "Building Websites & Web Apps", "·"]
           .map((item, i) => (
             <span key={`${pass}-${i}`} className={item === "·" ? "footer-dot" : "footer-marquee-item"}>
               {item}

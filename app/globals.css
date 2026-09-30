@@ -402,7 +402,7 @@ body {
 
 .about-facts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem 2.5rem;
   margin-top: 1rem;
   padding-top: 1.75rem;
